@@ -6,3 +6,8 @@
 ## 📍 Support
 - 🍎 IOS
 - 🤖 Android
+
+<br/>
+
+## 📱 Screenshot 
+![banner](https://github.com/SharifiDev/bmi-calc/raw/master/banner.png)
