@@ -6,6 +6,8 @@
 ## 📍 Support
 - 🍎 IOS
 - 🤖 Android
+- 🖥 Web (not completely)
+
 
 <br/>
 
