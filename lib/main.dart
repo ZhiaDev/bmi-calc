@@ -13,7 +13,7 @@ class Application extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'IRANSans'),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: HomeScreen()
     );
   }
 }
