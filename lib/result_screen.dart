@@ -21,136 +21,179 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final query = MediaQuery.of(context);
     String resultBMI = result.toStringAsFixed(0);
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          // Dynamic background
-          image: AssetImage("assets/$bg"),
-          fit: BoxFit.cover,
-        ),
+    return MediaQuery(
+      data: query.copyWith(
+        textScaleFactor: 1.0,
       ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child: Column(
-            children: [
-              
-              /* Result Card Section */
-              Expanded(
-                flex: 75,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 230),
-                    Container(
-                      child: Container(
-                        height: 300,
-                        width: 300,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: stateColor.withOpacity(0.2),
-                              spreadRadius: 10,
-                              blurRadius: 35,
-                            ),
-                          ],
-                        ),
-                        child: Card(
-                          elevation: 0,
-                          color: Colors.white.withOpacity(0.9),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(height: 15),
-                              Text(
-                                'نتیجه شاخص توده بدنی',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  color: Colors.black.withOpacity(0.7),
-                                ),
-                                textAlign: TextAlign.center,
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            // Dynamic background
+            image: AssetImage("assets/$bg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: SafeArea(
+            child: Column(
+              children: [
+                /* Result Card Section */
+                Expanded(
+                  flex: 75,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 230),
+                      Container(
+                        child: Container(
+                          height: 300,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: stateColor.withOpacity(0.2),
+                                spreadRadius: 10,
+                                blurRadius: 35,
                               ),
-                              Text(resultBMI,
-                                  style: TextStyle(
-                                      fontSize: 120,
-                                      fontWeight: FontWeight.w700),
-                                  textAlign: TextAlign.center),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('$resultText',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: stateColor,
-                                      ),
-                                      textAlign: TextAlign.center),
-                                  Text(' : وضعیت شما',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black.withOpacity(0.7),
-                                      ),
-                                      textAlign: TextAlign.center),
-                                ],
-                              ),
-                              SizedBox(height: 15),
                             ],
+                          ),
+                          child: Card(
+                            elevation: 0,
+                            color: Colors.white.withOpacity(0.9),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                /* Result Title Text */
+                                Expanded(
+                                  flex: 15,
+                                  child: Container(
+                                    child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            'نتیجه شاخص توده بدنی',
+                                            style: TextStyle(
+                                              fontSize: 22,
+                                              color:
+                                                  Colors.black.withOpacity(0.7),
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ]),
+                                  ),
+                                ),
+
+                                /* Result Number */
+                                Center(
+                                  child: Expanded(
+                                    flex: 70,
+                                    child: Container(
+                                      child: Text(resultBMI,
+                                          style: TextStyle(
+                                              fontSize: 128,
+                                              fontWeight: FontWeight.w700),
+                                          textAlign: TextAlign.center),
+                                    ),
+                                  ),
+                                ),
+
+                                /* Body status  Text */
+                                Expanded(
+                                  flex: 15,
+                                  child: Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '$resultText',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: stateColor,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              ' : وضعیت شما',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.black
+                                                    .withOpacity(0.7),
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-
-              /* Chart Section */
-              Expanded(
-                flex: 15,
-                child: Container(
-                  child: Column(
-                    children: [
-                      RightShape(width: weightBad),
-                      LeftShape(width: weightGood),
                     ],
                   ),
                 ),
-              ),
 
-              /* ReCalculate Button Section */
-              Expanded(
-                flex: 10,
-                child: Container(
-                  child: Center(
+                /* Red & green Chart Section */
+                Expanded(
+                  flex: 15,
+                  child: Container(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              primary: Colors.white,
-                              minimumSize: Size(347, 47),
-                              maximumSize: Size(347, 47),
-                              backgroundColor: Color(0xFF00796B)),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(
-                            'محاسبه مجدد',
-                            style: TextStyle(fontSize: 20),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+                        RightShape(width: weightBad),
+                        LeftShape(width: weightGood),
                       ],
                     ),
                   ),
                 ),
-              )
-            ],
+
+                /* ReCalculate Button Section */
+                Expanded(
+                  flex: 10,
+                  child: Container(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                primary: Colors.white,
+                                minimumSize: Size(347, 47),
+                                maximumSize: Size(347, 47),
+                                backgroundColor: Color(0xFF00796B)),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(
+                              'محاسبه مجدد',
+                              style: TextStyle(fontSize: 20),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
