@@ -3,13 +3,13 @@
 
 <br/>
 
-## 📍 Support
-- 🍎 IOS
-- 🤖 Android
-- 🖥 Web (not completely)
+## Support :
+- IOS
+- Android
+- Web (not completely)
 
 
 <br/>
 
-## 📱 Screenshot 
+## Screenshot :
 ![banner](https://github.com/SharifiDev/bmi-calc/raw/master/banner.png)
